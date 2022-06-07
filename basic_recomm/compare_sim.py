@@ -9,20 +9,24 @@ def cos_sim(a, b):
     d2 = 0
     dp = 0
 
-    for i in range(0,19):
+    for i in range(0, 19):
         dp += a[i] * b[i]
         d1 += a[i] * a[i]
         d2 += b[i] * b[i]
 
-    cosSim = dp / (math.sqrt(d1*d2))
+    cosSim = dp / (math.sqrt(d1 * d2))
     return cosSim
-    #return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+    # return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 
 def cos_sim2(a, b):
     d1 = 0
     d2 = 0
     dp = 0
+
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa******************************************")
+    print(a)
+    print("******************************************")
 
     for i in range(0, 19):
         if b[i] == 0:
@@ -32,17 +36,27 @@ def cos_sim2(a, b):
             d1 += a[i] * a[i]
             d2 += b[i] * b[i]
 
-    cosSim = dp / (math.sqrt(d1*d2))
+    if d1==0 or d2==0:
+        return -1
+
+    cosSim = dp / (math.sqrt(d1 * d2))
     return cosSim
+
+def selected_one(a, b):
+    for i in range(0, 19):
+        if b[i] == 1:
+            return a[i]
 
 
 def search_most_sim(selected_key):
     db = Font_keyword_value.objects.values()
     selected_key = list(map(float, selected_key))
 
-    print("******************************************")
-    print(db)
-    print("******************************************")
+    selected_num = 0
+
+    for i in range(0,19):
+        if selected_key[i]==1:
+            selected_num+=1
 
     cos_val = []
     cos_val2 = []
@@ -50,10 +64,18 @@ def search_most_sim(selected_key):
         comp = db[i]['key_value']
         comp = list(map(float, comp))
         cosSim = cos_sim(comp, selected_key)
-        cosSim2 = cos_sim2(comp, selected_key)
 
-        cos_val.append([i,cosSim])
-        cos_val2.append([i,cosSim2])
+        if selected_num==1:
+            cosSim2=selected_one(comp, selected_key)
+        else:
+            cosSim2 = cos_sim2(comp, selected_key)
+
+        cos_val.append([i, cosSim])
+
+        if cosSim2 == -1:
+            continue
+
+        cos_val2.append([i, cosSim2])
 
     print("******************************************")
     print(cos_val)

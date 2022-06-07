@@ -5,9 +5,6 @@
         <meta charset="UTF-8">
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
         <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
@@ -232,7 +229,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script "{% static 'js/scripts.js' %}"></script>
         <script type="text/javascript">
             var font_list=['ACC어린이마음고운체', '도스고딕', '이랜드초이스', 'J 개구쟁이 Bold', '가나초콜릿', 'GmarketSans L', '고양체', 'HS봄바람체 3.0 thin',
                 'IBM Plex Sans Medium', '제주 한라산', 'KITA', '마포 애민', '마포 망포나루', '마루 부리', '원스토어 모바일 POP', 'Rix열정도체',
@@ -292,6 +289,12 @@
                 }
 
 
+            }
+            function make_font_card_hidden(){
+                for(var i=1; i<7; i++){
+                    let card_id="c"+i;
+                    document.getElementById(card_id).style.visibility="hidden";
+                }
             }
 
             function link_select(index){
@@ -379,6 +382,15 @@
             }
 
             function search_font(){
+                for(var i=0; i<key_arr.length;i++){
+                    if (key_arr[i]===1){
+                        break;
+                    }
+                    if (i===key_arr.length-1){
+                        make_font_card_hidden();
+                        return 0;
+                    }
+                }
                 $.ajax({
                     url: '{% url 'basic_recomm:search_font' %}',
                     type: 'GET',
