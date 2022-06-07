@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+        <style>
+            @font-face {
+            font-family: 'GongGothicMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            }
+
+            button{
+                font-family:'GongGothicMedium',monospace;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="row">
+            <div class="bg-light col-md-4">
+                <div class="container p-5">
+                    <h3 class="col-md-12 mb-5 ml-4 align-middle" style="font-family:Rubik,serif;">Select Keyword</h3>
+                        <div class="col-md-12">
+                            <div class="row mb-4" style="height: 50px;">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="0" value="angluar" onclick="select_keyword(this.id)">각진</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="1" value="formal" onclick="select_keyword(this.id)">공적인</button>
+                            </div>
+                             <div class="row mb-4" style="height: 50px">
+                                 <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="2" value="disorderly" onclick="select_keyword(this.id)">무질서한</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="3" value="technical" onclick="select_keyword(this.id)">전문적인</button>
+                            </div>
+                             <div class="row mb-4" style="height: 50px">
+                                 <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="4" value="gentle" onclick="select_keyword(this.id)">부드러운</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="5" value="modern" onclick="select_keyword(this.id)">모던한</button>
+                            </div>
+                            <div class="row mb-4" style="height: 50px">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="6" value="harmonious" onclick="select_keyword(this.id)">조화로운</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="7 "value="stiff" onclick="select_keyword(this.id)">뻣뻣한</button>
+                            </div>
+                            <div class="row mb-4" style="height: 50px">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="8"  value="marked" onclick="select_keyword(this.id)">시선을 끄는</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="9" value="boring" onclick="select_keyword(this.id)">지루한</button>
+                            </div>
+                            <div class="row mb-4" style="height: 50px">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="10" value="calm" onclick="select_keyword(this.id)">고요한</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="11" value="delicate" onclick="select_keyword(this.id)">섬세한</button>
+                            </div>
+                            <div class="row mb-4" style="height: 50px">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="12" value="friendly" onclick="select_keyword(this.id)">친근한</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="13" value="warm" onclick="select_keyword(this.id)">따뜻한</button>
+                            </div>
+                            <div class="row mb-4" style="height: 50px">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="14" value="dramatic" onclick="select_keyword(this.id)">극적인</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="15" value="graceful" onclick="select_keyword(this.id)">우아한</button>
+                            </div>
+                             <div class="row mb-4" style="height: 50px">
+                                 <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="16" value="strong" onclick="select_keyword(this.id)">강한</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="17" value="determinde" onclick="select_keyword(this.id)">단호한</button>
+                            </div>
+                            <div class="row mb-4" style="height: 50px">
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="18" value="playful" onclick="select_keyword(this.id)">쾌활한</button>
+                                <div class="col-md-1"></div>
+                                <button class="btn btn-outline-dark col-md-5" id="submit" onclick="search_font()">&#10140;SEARCH</button>
+                            </div>
+
+
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <!-- Header-->
+                <header class="bg-dark py-2">
+                <div class="container my-5">
+                    <div class="text-center text-white">
+                        <h1 class="display-4 fw-bolder">Find the font you want </h1>
+                        <p class="lead fw-normal text-white-50 mb-0">With various keyword</p>
+                    </div>
+                </div>
+            </header>
+                <!-- Section-->
+                <section class="py-1">
+                <div class="container px-4 px-lg-5 mt-5">
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+                        <div id="c1" class="col mb-5" style="visibility: hidden">
+                            <div class="card">
+                                <!-- Product image-->
+                                <img id="img1" class="card-img-top" src="{% static 'img/0.png' %}" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder" id="f1"></h5>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a id="link1" class="btn btn-outline-dark mt-auto" href="#">More options</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5" id="c2" style="visibility: hidden">
+                            <div class="card">
+                                <!-- Product image-->
+                                <img id="img2" class="card-img-top" src="https://dummyimage.com/400x150/7d797d/ffffff" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder" id="f2"></h5>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a id="link2" class="btn btn-outline-dark mt-auto" href="#">More options</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="c3" class="col mb-5" style="visibility: hidden">
+                            <div class="card">
+                                <!-- Product image-->
+                                <img id="img3" class="card-img-top" src="https://dummyimage.com/400x150/7d797d/ffffff" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder" id="f3"></h5>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a id="link3" class="btn btn-outline-dark mt-auto" href="#">More options</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="c4" class="col mb-5" style="visibility: hidden">
+                            <div class="card">
+                                <!-- Product image-->
+                                <img id="img4" class="card-img-top" src=https://dummyimage.com/400x150/7d797d/ffffff" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder" id="f4"></h5>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a id="link4" class="btn btn-outline-dark mt-auto" href="#">More options</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="c5" class="col mb-5" style="visibility: hidden">
+                            <div class="card">
+                                <!-- Product image-->
+                                <img id="img5" class="card-img-top" src="https://dummyimage.com/400x150/7d797d/ffffff" alt="..." />
+                                <!-- Produc details-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder" id="f5"></h5>
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a id="link5" class="btn btn-outline-dark mt-auto" href="#">More options</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="c6" class="col mb-5" style="visibility: hidden">
+                            <div class="card">
+                                <!-- Product image-->
+                                <img id="img6" class="card-img-top" src="https://dummyimage.com/400x150/7d797d/ffffff" alt="..." />
+                                <!-- Produc details-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder" id="f6"></h5>
+
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a id="link6" class="btn btn-outline-dark mt-auto" href="#">More options</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+            </div>
+            <!-- Footer-->
+        </div>
+        <footer class="py-5 bg-dark">
+                <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Ji Young Seo(jyseo0102@sookmyung.ac.kr)</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script type="text/javascript">
+            var font_list=['ACC어린이마음고운체', '도스고딕', '이랜드초이스', 'J 개구쟁이 Bold', '가나초콜릿', 'GmarketSans L', '고양체', 'HS봄바람체 3.0 thin',
+                'IBM Plex Sans Medium', '제주 한라산', 'KITA', '마포 애민', '마포 망포나루', '마루 부리', '원스토어 모바일 POP', 'Rix열정도체',
+                '상주 경천섬체', '잉크립퀴드', 'TMON 몬소리체', 'hy궁서', '강한육군 Medium', '경기천년바탕', '박물관문화재단클래식L', '서울한강 장체L',
+                '솔뫼 김대건', '조선일보명조']
+
+            var key_arr=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            function select_keyword(selected_keyword){
+
+                var current_page=document.getElementById(selected_keyword);
+                var key_id=parseInt(selected_keyword)
+                if(key_arr[key_id]===0){
+                    key_arr[key_id]=1;
+                    current_page.style.background="#0d6efd";
+                    current_page.style.color="white";
+                } else{
+                    key_arr[key_id]=0;
+                    current_page.style.background="#f8f9fa";
+                    current_page.style.color="#343a40";
+                }
+                console.log(key_arr)
+
+            }
+
+            function make_font_card(data){
+                sim=[];
+                for(var i=0; i<3; i++){
+                    sim.push(data["sim1"][i][0]);
+                }
+                for(var i=0; i<3; i++){
+                    sim.push(data["sim2"][i][0]);
+                }
+
+                let sim_set=[...new Set(sim)];
+
+                for(var i=0; i<sim_set.length;i++){
+                    let j=i+1
+                    let card_id="c"+j;
+                    let img_id="img"+j;
+                    let font_id="f"+j;
+                    let link_id="link"+j;
+
+                    let sim_i=sim_set[i]
+                    img_src='img/'+sim_i+".png";
+                    link_url=link_select(sim_i)
+
+                    document.getElementById(img_id).src="{% get_static_prefix %}"+img_src;
+                    document.getElementById(font_id).innerText=font_list[sim_i];
+                    document.getElementById(link_id).href=link_url
+                    document.getElementById(card_id).style.visibility="visible";
+                }
+                for(var i=sim_set.length; i<6; i++){
+                    let j=i+1;
+
+                    card_id="c"+j;
+                    document.getElementById(card_id).style.visibility="hidden";
+                }
+
+
+            }
+
+            function link_select(index){
+                let link;
+                switch (index){
+                    case 0:
+                        link="https://www.acc.go.kr/info/contents.do?PID=0109";
+                        return link;
+                    case 1:
+                        link="https://github.com/hurss/fonts";
+                        return link;
+                    case 2:
+                        link="https://www.elandretail.com/news/smart_shopping_02.do?evtID=EVT20201102000002388&branchID=00110001&lang=000600KO";
+                        return link;
+                    case 3:
+                        link="http://jikjisoft.com/freefont/5f6eec3188228e152ce08381";
+                        return link;
+                    case 4:
+                        link="https://www.lotteconf.co.kr/prcenter/gana";
+                        return link;
+                    case 5:
+                        link="http://company.gmarket.co.kr/company/about/company/company--font.asp";
+                        return link;
+                    case 6:
+                        link="http://www.goyang.go.kr/www/www05/www05_3/www05_3_6/www05_3_6_tab1.jsp";
+                        return link;
+                    case 7:
+                        link="https://github.com/IBM/plex/tree/v5.0.0/IBM-Plex-Sans-KR/fonts/complete";
+                        return link;
+                    case 8:
+                        link="https://www.jeju.go.kr/jeju/symbol/font/infor.htm";
+                        return link;
+                    case 9:
+                        link="https://www.kita.net/asocGuidance/asocGuidance/ciRgltn/exclusiveFont.do";
+                        return link;
+                    case 10:
+                        link="https://www.mapo.go.kr/site/main/content/mapo04010201";
+                        return link;
+                    case 11:
+                        link="https://www.mapo.go.kr/site/main/content/mapo04010201";
+                        return link;
+                    case 12:
+                        link="https://hangeul.naver.com/";
+                        return link;
+                    case 13:
+                        link="https://www.gg-onestore.com/Font";
+                        return link;
+                    case 14:
+                        link="https://www.rixfontcloud.com/Promotion/Rixyeoljeongdo#license";
+                        return link;
+                    case 15:
+                        link="https://www.sangju.go.kr/page/4317/3076.tc";
+                        return link;
+                    case 16:
+                        link="https://drive.google.com/drive/folders/1t4DZdt5nv2p1hUKOYbChKcY436-zaqOC";
+                        return link;
+                    case 17:
+                        link="https://brunch.co.kr/@creative/32";
+                        return link;
+                    case 18:
+                        link="https://www.hanyang.co.kr/license_20131011.php";
+                        return link;
+                    case 19:
+                        link="https://m.blog.naver.com/armynuri2017/222197996527";
+                        return link;
+                    case 20:
+                        link="https://www.gg.go.kr/contents/contents.do?ciIdx=679&menuId=2457";
+                        return link;
+                    case 21:
+                        link="https://www.nmf.or.kr/agency/sub/20181024100034469100_contents.do";
+                        return link;
+                    case 22:
+                        link="https://www.seoul.go.kr/seoul/font.do";
+                        return link;
+                    case 23:
+                        link="https://www.kimdaegeon.com/design/node/?menu=050100";
+                        return link;
+                    case 24:
+                        link="https://event.chosun.com/100/100font.html";
+                        return link;
+                    default:
+                        link="#"
+                        return link;
+                }
+            }
+
+            function search_font(){
+                $.ajax({
+                    url: '{% url 'basic_recomm:search_font' %}',
+                    type: 'GET',
+                    data:{
+                        'selected_key[]': key_arr
+                    },
+                    ///dataType: 'json',
+                    success:function (data){
+                        console.log("aa")
+                        console.log(data);
+                        make_font_card(data);
+                    }
+                })
+            }
+
+
+        </script>
+    </body>
+</html>
